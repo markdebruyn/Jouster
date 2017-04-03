@@ -11,31 +11,40 @@ public class PlayerControl : MonoBehaviour
     private Transform trans;
     private PlayerControl enemy;
 
-    int timecounter;
-
-    private Animator testanimator;
-
-    public float speed;
-    public float speedincreace;
-    public KeyCode speedDown;
-    public KeyCode speedUp;
-    public KeyCode jumpkey;
-    public KeyCode turnLeft;
-    public KeyCode turnRight;
-    public KeyCode jabKey;
-    public KeyCode parryKey;
-    public int player;
-    int isAction;
-    private bool inverted = false;    
-    public bool isStabbed = false;
-    float stunned = 0;
-
     [SerializeField]
     private float knockbackpower = 2;
     public bool onLand = true;
-    public float jumpforce;
     private bool highknockback = false;
-    public float knockbackHight = 5;
+    public float knockbackHight = 10;
+    public int player;
+    int isAction;
+    private bool inverted = false;
+    public bool isStabbed = false;
+    bool stunned = false;
+    
+
+
+    int timecounter;
+    float timeStampCooldownParry;
+    float timeStampCooldownJab;
+    public float cooldownJabInSeconds;
+    public float cooldownParryInSeconds;
+    public float speed;
+    public float speedIncreace;
+
+    [Header("input")]
+    public KeyCode speedDown;
+    public KeyCode speedUp;
+    public KeyCode jabKey;
+    public KeyCode parryKey;
+
+   
+    /*
+    IEnumerator test()
+    {
+        yield return new  WaitForSecondsRealtime(2);
+    }
+    */
 
     // Use this for initialization
     void Start()
@@ -47,8 +56,6 @@ public class PlayerControl : MonoBehaviour
         {
             inverted = true;
         }
-        testanimator = GetComponent<Animator>();
-        
     }
 
 
@@ -84,10 +91,10 @@ public class PlayerControl : MonoBehaviour
                 {
                     highknockback = true;
                 }
-               // body.AddForce(Vector3.forward * 0);
+                // body.AddForce(Vector3.forward * 0);
                 //dontmove = true;
                 //Clash();
-                isAction = 5;
+                Clash();
             }
         }
 
@@ -98,52 +105,25 @@ public class PlayerControl : MonoBehaviour
         if(trans.position.y >= 0.5f || !onLand) Move();
     }
 
-    void timekeeper()
-    {
-        
-        print(stunned);
-        timecounter++;
-        if (stunned > 0)
-        {
-            stunned = stunned - Time.deltaTime;
-            //isAction = 6;
-        }
-        else
-        {
-            stunned = 0;
-            //isAction = 0;
-        }
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        timekeeper();
         if (Input.GetKeyUp(speedUp))
         {
-            speed = speed + speedincreace;
+            speed = speed + speedIncreace;
         }
         if (Input.GetKeyUp(speedDown))
         {
-            speed = speed - speedincreace;
+            speed = speed - speedIncreace;
         }
         Lose();
-        if (Input.GetKeyUp(jumpkey))
+        if (Input.GetKeyUp(jabKey))
         {
             isAction = 1;
         }
-        if (/*Input.GetKeyUp(turnLeft) || */(Input.GetKeyUp(turnRight)))
-        {
-            isAction = 2;
-        }
-        if (Input.GetKeyUp(jabKey))
-        {
-            isAction = 3;
-        }
         if (Input.GetKeyUp(parryKey))
         {
-            isAction = 4;
+            isAction = 2;
         }
 
    
@@ -156,69 +136,23 @@ public class PlayerControl : MonoBehaviour
                 }
             case 1:
                 {
-                    jump();
+                    jab();
                     break;
                 }
             case 2:
                 {
-                    TurnLeft();
-                    if (inverted)
-                    {
-                        trans.Rotate(new Vector3(0, 0, 0));
-                    }
-                    else 
-                    {
-                        trans.Rotate(new Vector3(0, 180, 0));                        
-                    }
+                    parry();
                     break;
                 }
             case 3:
                 {
-                    jab();
-                    break;
-                }
-            case 4:
-                {
-                    parry();
-                    break;
-                }
-            case 5:
-                {
                     Clash();
                     break;
                 }
-            case 6:
-                {
-                    break;
-                }
         }
     }
 
-    private void Clash()
-    {
-        knockbackpower = knockbackpower + 0.2f;  
-        if (isStabbed)
-        {
-            //knockbackpower = knockbackpower * 1.2f;
-            isStabbed = false;
-            print(isStabbed);
-            print("stabtest");
-        }
-
-        if (highknockback)
-        {
-            print("highknockback calculated");
-            enemy.knockbackpower = enemy.knockbackpower + 1.2f;
-            highknockback = false;
-        }
-        
-        print("test");
-        print(knockbackpower + " , playerNumber = " + player);
-        body.AddForce(Vector3.right * ((inverted) ? -1 : 1) * knockbackpower);
-        body.AddForce(Vector3.up * knockbackHight);
-        isAction = 0;
-
-    }
+ 
 
     private void Move()
     {
@@ -244,84 +178,66 @@ public class PlayerControl : MonoBehaviour
 
     private void parry()
     {
-        stunned = 1.5f;
-        print("STUN");
-        isAction = 0;
-    }
-
-    private void jab()
-    {
-        if (enemy != null)
+        if (timeStampCooldownParry <= Time.time)
         {
-            enemy.isStabbed = true;
-            enemy.isAction = 5;
-            enemy.knockbackpower = enemy.knockbackpower * 1.2f;
-            isAction = 5;         
+            timeStampCooldownParry = Time.time + cooldownParryInSeconds;
+            
         }
         else
         {
             isAction = 0;
         }
+
     }
 
-    private void TurnLeft()
+    private void jab()
     {
-        if (inverted)
+        if (timeStampCooldownJab <= Time.time)
         {
-            trans.Rotate(new Vector3(0, 0, 0));
-            inverted = false;
-            
-            isAction = 0;
-        }
-        else /*(!inverted)*/
-        {
-            trans.Rotate(new Vector3(0, 180, 0));
-            inverted = true;
-            
-            isAction = 0;
-        }
-    }
-
-    /*
-    private void TurnRight()
-    {
-        if (!inverted)
-        {
-            trans.Rotate(new Vector3(0, 180, 0));
-            inverted = true;
-            isAction = 0;
-        }
-    }
-    */
-
-    private void jump()
-    {
-        if (isAction == 1)
-        {
-            if (onLand)
+            timeStampCooldownJab = Time.time + cooldownJabInSeconds;
+            if (enemy != null)
             {
-                if (trans.position.y < 1.5)
-                {
-                    body.AddForce(Vector3.up * jumpforce);
-                }
-                else
-                {
-                    onLand = false;
-                }
+                enemy.isStabbed = true;
+                enemy.Clash();
+                enemy.knockbackpower = enemy.knockbackpower * 1.2f;
+                Clash();
             }
             else
             {
-                if (trans.position.y > 0.51)
-                {
-                    body.AddForce(Vector3.down * jumpforce);
-                }
-                else
-                {
-                    onLand = true;
-                    isAction = 0;
-                }
+                isAction = 0;
             }
         }
+        else
+        {
+            isAction = 0;
+        }
+       
+    }
+
+    private void Clash()
+    {
+        knockbackpower = knockbackpower + 0.2f;
+        if (isStabbed)
+        {
+            //knockbackpower = knockbackpower * 1.2f;
+            isStabbed = false;
+            print(isStabbed);
+            print("stabtest");
+        }
+
+        if (highknockback)
+        {
+            print("highknockback calculated");
+            enemy.knockbackpower = enemy.knockbackpower + 1.2f;
+            highknockback = false;
+        }
+
+        print("test");
+        print(knockbackpower + " , playerNumber = " + player);
+        body.AddForce(Vector3.right * ((inverted) ? -1 : 1) * knockbackpower);
+        body.AddForce(Vector3.up * knockbackHight);
+        isAction = 0;
+
     }
 
     private void Lose()

@@ -1,13 +1,4 @@
 sceneSetups:
-- path: Assets/Startscreen.unity
-  isLoaded: 0
-  isActive: 0
 - path: Assets/gamescene.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Player1 Wins.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/Player2 Wins.unity
-  isLoaded: 0
-  isActive: 0
