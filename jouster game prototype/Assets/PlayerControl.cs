@@ -30,6 +30,7 @@ public class PlayerControl : MonoBehaviour
     public bool shielded = false;
     public float highknockbackPower = 1.2f;
     public float clashPower = 0.2f;
+    public float jabKnockback = 1.2f;
 
     int timecounter;
     float timeStampCooldownParry;
@@ -227,14 +228,14 @@ public class PlayerControl : MonoBehaviour
                     stunned = true;
                     timeStampStun = Time.time + stunTimeInSeconds;
                     enemy.Clash();
-                    knockbackpower = knockbackpower * 1.2f;
+                    knockbackpower = knockbackpower + jabKnockback;
                     Clash();
                 }
                 else
                 {
                     enemy.isStabbed = true;
                     enemy.Clash();
-                    enemy.knockbackpower = enemy.knockbackpower * 1.2f;
+                    enemy.knockbackpower = enemy.knockbackpower + jabKnockback;
                     Clash();
                 }
             }
