@@ -10,7 +10,9 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody body;
     private Transform trans;
     private PlayerControl enemy;
-
+    public Animator jabAnimation;
+    public Animator blockAnimation;
+    
     [SerializeField]
     private float knockbackpower = 2;
     public bool onLand = true;
@@ -21,8 +23,11 @@ public class PlayerControl : MonoBehaviour
     private bool inverted = false;
     public bool isStabbed = false;
     bool stunned = false;
-    
-
+    public float stunTimeInSeconds;
+    float timeStampStun;
+    public float shieldTime;
+    float shieldTimeStamp;
+    public bool shielded = false;
 
     int timecounter;
     float timeStampCooldownParry;
@@ -56,27 +61,20 @@ public class PlayerControl : MonoBehaviour
         {
             inverted = true;
         }
+         var iets = this.GetComponentInChildren<Animation>();
+        print(iets);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
         enemy = other.gameObject.GetComponent<PlayerControl>();
-        print(enemy);
-        print("enemy jabable");
-        SphereCollider tefdtesvufw = new SphereCollider();
-        if (other.GetType() == tefdtesvufw.GetType())
-        {
-            if (!enemy.onLand)
-            {
-                enemy.body.AddForce(Vector3.up * 5);
-            }
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         enemy = null;
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -91,9 +89,6 @@ public class PlayerControl : MonoBehaviour
                 {
                     highknockback = true;
                 }
-                // body.AddForce(Vector3.forward * 0);
-                //dontmove = true;
-                //Clash();
                 Clash();
             }
         }
@@ -102,12 +97,33 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(trans.position.y >= 0.5f || !onLand) Move();
+        if (!stunned)
+        {
+            if (trans.position.y >= 0.5f || !onLand) Move();
+        }
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
+        blockAnimation.Play(0);
+        if (shielded)
+        {            
+            print(shieldTime + " JAB ME!");
+            if (shieldTimeStamp >= Time.time)
+            {
+                shielded = false;
+            }
+        }
+
+        if (stunned)
+        {
+            if (timeStampStun <= Time.time)
+            {
+                stunned = false;
+            }
+        }
         if (Input.GetKeyUp(speedUp))
         {
             speed = speed + speedIncreace;
@@ -126,29 +142,31 @@ public class PlayerControl : MonoBehaviour
             isAction = 2;
         }
 
-   
 
-        switch (isAction)
+        if (!stunned)
         {
-            case 0:
-                {
-                    break;
-                }
-            case 1:
-                {
-                    jab();
-                    break;
-                }
-            case 2:
-                {
-                    parry();
-                    break;
-                }
-            case 3:
-                {
-                    Clash();
-                    break;
-                }
+            switch (isAction)
+            {
+                case 0:
+                    {
+                        break;
+                    }
+                case 1:
+                    {
+                        jab();
+                        break;
+                    }
+                case 2:
+                    {
+                        parry();
+                        break;
+                    }
+                case 3:
+                    {
+                        Clash();
+                        break;
+                    }
+            }
         }
     }
 
@@ -180,8 +198,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (timeStampCooldownParry <= Time.time)
         {
+
             timeStampCooldownParry = Time.time + cooldownParryInSeconds;
-            
+            shieldTimeStamp = Time.time + shieldTime;
+            shielded = true;
         }
         else
         {
@@ -194,24 +214,31 @@ public class PlayerControl : MonoBehaviour
     {
         if (timeStampCooldownJab <= Time.time)
         {
+            print("stabcooldown started");
             timeStampCooldownJab = Time.time + cooldownJabInSeconds;
             if (enemy != null)
             {
-                enemy.isStabbed = true;
-                enemy.Clash();
-                enemy.knockbackpower = enemy.knockbackpower * 1.2f;
-                Clash();
-            }
-            else
-            {
-                isAction = 0;
+                print("jab enemy");
+                if (enemy.shielded)
+                {
+                    print("STUN!");
+                    stunned = true;
+                    timeStampStun = Time.time + stunTimeInSeconds;
+                    enemy.Clash();
+                    knockbackpower = knockbackpower * 1.2f;
+                    Clash();
+                }
+                else
+                {
+                    enemy.isStabbed = true;
+                    enemy.Clash();
+                    enemy.knockbackpower = enemy.knockbackpower * 1.2f;
+                    Clash();
+                }
             }
         }
-        else
-        {
-            isAction = 0;
-        }
-       
+
+        isAction = 0;
     }
 
     private void Clash()
