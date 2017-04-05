@@ -28,6 +28,8 @@ public class PlayerControl : MonoBehaviour
     public float shieldTime;
     float shieldTimeStamp;
     public bool shielded = false;
+    public float highknockbackPower = 1.2f;
+    public float clashPower = 0.2f;
 
     int timecounter;
     float timeStampCooldownParry;
@@ -107,7 +109,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        blockAnimation.Play(0);
+        //blockAnimation.Play(0);
         if (shielded)
         {            
             print(shieldTime + " JAB ME!");
@@ -212,7 +214,7 @@ public class PlayerControl : MonoBehaviour
 
     private void jab()
     {
-        if (timeStampCooldownJab <= Time.time)
+        if (timeStampCooldownJab <= Time.time || trans.position.y <=0.5)
         {
             print("stabcooldown started");
             timeStampCooldownJab = Time.time + cooldownJabInSeconds;
@@ -243,7 +245,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Clash()
     {
-        knockbackpower = knockbackpower + 0.2f;
+        knockbackpower = knockbackpower + clashPower;
         if (isStabbed)
         {
             //knockbackpower = knockbackpower * 1.2f;
@@ -255,11 +257,10 @@ public class PlayerControl : MonoBehaviour
         if (highknockback)
         {
             print("highknockback calculated");
-            enemy.knockbackpower = enemy.knockbackpower + 1.2f;
+            enemy.knockbackpower = enemy.knockbackpower + highknockbackPower;
             highknockback = false;
         }
 
-        print("test");
         print(knockbackpower + " , playerNumber = " + player);
         body.AddForce(Vector3.right * ((inverted) ? -1 : 1) * knockbackpower);
         body.AddForce(Vector3.up * knockbackHight);
