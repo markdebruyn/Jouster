@@ -4,20 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : MonoBehaviour 
 {
 
     private Rigidbody body;
     private Transform trans;
     private PlayerControl enemy;
-    public Animator jabAnimation;
-    public Animator blockAnimation;
+    public Animator knightAnim;
+    public Animator horseAnim;
     
     [SerializeField]
     private float knockbackpower = 2;
-    public bool onLand = true;
-    private bool highknockback = false;
-    public float knockbackHight = 10;
+
+    private bool highKnockback = false;
+    public float knockbackHeight = 10;
     public int player;
     int isAction;
     private bool inverted = false;
@@ -31,6 +31,8 @@ public class PlayerControl : MonoBehaviour
     public float highknockbackPower = 1.2f;
     public float clashPower = 0.2f;
     public float jabKnockback = 1.2f;
+    float stunLength = 0f;
+    float shieldLength = 0f;
 
     int timecounter;
     float timeStampCooldownParry;
@@ -58,14 +60,12 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         body = gameObject.GetComponent<Rigidbody>();
-        trans = gameObject.GetComponent<Transform>();
+        trans = transform;
         isAction = 0;
         if (player == 1)
         {
             inverted = true;
         }
-         var iets = this.GetComponentInChildren<Animation>();
-        print(iets);
     }
 
 
@@ -90,7 +90,7 @@ public class PlayerControl : MonoBehaviour
                 print("knockback");
                 if (enemy.speed < speed)
                 {
-                    highknockback = true;
+                    highKnockback = true;
                 }
                 Clash();
             }
@@ -100,75 +100,76 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!stunned)
-        {
-            if (trans.position.y >= 0.5f || !onLand) Move();
-        }
- 
+        if (!stunned && trans.position.y >= 0.5f) Move();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //blockAnimation.Play(0);
         if (shielded)
-        {            
+        {
+            shieldLength += Time.deltaTime;         
             print(shieldTime + " JAB ME!");
-            if (shieldTimeStamp >= Time.time)
+            if (shieldLength > shieldTime)
             {
                 shielded = false;
+                shieldLength = 0f;
             }
         }
 
         if (stunned)
         {
-            if (timeStampStun <= Time.time)
+            stunLength += Time.deltaTime;
+            if (stunLength > stunTimeInSeconds)
             {
                 stunned = false;
+                stunLength = 0f;
             }
         }
+
+        #region Player Input
         if (Input.GetKeyUp(speedUp))
         {
             speed = speed + speedIncreace;
         }
+
         if (Input.GetKeyUp(speedDown))
         {
             speed = speed - speedIncreace;
         }
-        Lose();
+        
         if (Input.GetKeyUp(jabKey))
         {
             isAction = 1;
         }
+
         if (Input.GetKeyUp(parryKey))
         {
             isAction = 2;
         }
 
+        #endregion
 
         if (!stunned)
         {
             switch (isAction)
             {
-                case 0:
-                    {
-                        break;
-                    }
                 case 1:
-                    {
-                        jab();
-                        break;
-                    }
+                    Jab();
+                    break;
+                    
                 case 2:
-                    {
-                        parry();
-                        break;
-                    }
-                case 3:
-                    {
-                        Clash();
-                        break;
-                    }
+                    Parry();
+                    break;
+                    
+                case 3: 
+                    Clash();
+                    break;
+                    
+                default:
+                    break;
             }
         }
     }
@@ -177,31 +178,22 @@ public class PlayerControl : MonoBehaviour
 
     private void Move()
     {
-        float tempsspeed;
-        if (!onLand)
-        {
-            tempsspeed = speed / 2;
-        }
-        else
-        {
-            tempsspeed = speed;
-        }
         if (inverted)
         {
-            body.AddForce(Vector3.right * tempsspeed);
+            body.AddForce(Vector3.right * speed);
         }
         else
         {
-            body.AddForce(Vector3.left * tempsspeed);
+            body.AddForce(Vector3.left * speed);
         }
 
     }
 
-    private void parry()
+    private void Parry()
     {
         if (timeStampCooldownParry <= Time.time)
         {
-
+            knightAnim.SetTrigger("Block");
             timeStampCooldownParry = Time.time + cooldownParryInSeconds;
             shieldTimeStamp = Time.time + shieldTime;
             shielded = true;
@@ -213,20 +205,21 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    private void jab()
+    private void Jab()
     {
-        if (timeStampCooldownJab <= Time.time || trans.position.y <=0.5)
+        if (timeStampCooldownJab <= Time.time || trans.position.y   <=0.5)
         {
             print("stabcooldown started");
+            knightAnim.SetTrigger("Jab");
             timeStampCooldownJab = Time.time + cooldownJabInSeconds;
             if (enemy != null)
             {
                 print("jab enemy");
+               
                 if (enemy.shielded)
                 {
                     print("STUN!");
                     stunned = true;
-                    timeStampStun = Time.time + stunTimeInSeconds;
                     enemy.Clash();
                     knockbackpower = knockbackpower + jabKnockback;
                     Clash();
@@ -255,20 +248,21 @@ public class PlayerControl : MonoBehaviour
             print("stabtest");
         }
 
-        if (highknockback)
+        if (highKnockback)
         {
             print("highknockback calculated");
             enemy.knockbackpower = enemy.knockbackpower + highknockbackPower;
-            highknockback = false;
+            highKnockback = false;
         }
 
         print(knockbackpower + " , playerNumber = " + player);
         body.AddForce(Vector3.right * ((inverted) ? -1 : 1) * knockbackpower);
-        body.AddForce(Vector3.up * knockbackHight);
+        body.AddForce(Vector3.up * knockbackHeight);
         isAction = 0;
 
     }
 
+    
     private void Lose()
     {
         if (trans.position.y < 0)
@@ -286,5 +280,6 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
-
+    
 }
+

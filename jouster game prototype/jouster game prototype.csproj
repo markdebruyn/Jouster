@@ -79,6 +79,7 @@
     <Compile Include="Assets\Jump.cs" />
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\PlayerControl.cs" />
+    <Compile Include="Assets\PlayerInterface.cs" />
     <Compile Include="Assets\TurnCommand.cs" />
     <Compile Include="Assets\movement2.cs" />
     <Compile Include="Assets\start_Game.cs" />
