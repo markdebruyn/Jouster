@@ -1,0 +1,349 @@
+
+Horse.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Horse End tail
+  rotate: false
+  xy: 765, 650
+  size: 13, 19
+  orig: 13, 19
+  offset: 0, 0
+  index: -1
+Horse Feet
+  rotate: true
+  xy: 917, 529
+  size: 21, 11
+  orig: 21, 11
+  offset: 0, 0
+  index: -1
+Horse Fore leg
+  rotate: false
+  xy: 999, 938
+  size: 23, 33
+  orig: 23, 33
+  offset: 0, 0
+  index: -1
+Horse Fore under leg
+  rotate: false
+  xy: 999, 880
+  size: 19, 32
+  orig: 19, 32
+  offset: 0, 0
+  index: -1
+Horse Front body
+  rotate: false
+  xy: 416, 315
+  size: 100, 61
+  orig: 100, 61
+  offset: 0, 0
+  index: -1
+Horse Head
+  rotate: false
+  xy: 853, 327
+  size: 46, 49
+  orig: 46, 49
+  offset: 0, 0
+  index: -1
+Horse Hind body
+  rotate: false
+  xy: 853, 588
+  size: 85, 52
+  orig: 85, 52
+  offset: 0, 0
+  index: -1
+Horse Hind leg
+  rotate: true
+  xy: 615, 383
+  size: 28, 34
+  orig: 28, 34
+  offset: 0, 0
+  index: -1
+Horse Hind under leg
+  rotate: false
+  xy: 272, 217
+  size: 15, 37
+  orig: 15, 37
+  offset: 0, 0
+  index: -1
+Horse Hindquarters
+  rotate: false
+  xy: 416, 273
+  size: 42, 40
+  orig: 42, 40
+  offset: 0, 0
+  index: -1
+Horse Knee
+  rotate: false
+  xy: 999, 863
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+Horse Mane
+  rotate: false
+  xy: 573, 383
+  size: 40, 28
+  orig: 40, 28
+  offset: 0, 0
+  index: -1
+Horse Neck
+  rotate: false
+  xy: 518, 317
+  size: 51, 59
+  orig: 51, 59
+  offset: 0, 0
+  index: -1
+Horse Shoulder
+  rotate: false
+  xy: 940, 597
+  size: 35, 43
+  orig: 35, 43
+  offset: 0, 0
+  index: -1
+Horse Tail
+  rotate: false
+  xy: 200, 111
+  size: 19, 15
+  orig: 19, 15
+  offset: 0, 0
+  index: -1
+Horse Throat
+  rotate: false
+  xy: 999, 973
+  size: 23, 47
+  orig: 23, 47
+  offset: 0, 0
+  index: -1
+Knight Body
+  rotate: false
+  xy: 853, 511
+  size: 62, 75
+  orig: 62, 75
+  offset: 0, 0
+  index: -1
+Knight Elbow
+  rotate: true
+  xy: 272, 199
+  size: 16, 15
+  orig: 16, 15
+  offset: 0, 0
+  index: -1
+Knight Eyes
+  rotate: true
+  xy: 503, 288
+  size: 25, 13
+  orig: 25, 13
+  offset: 0, 0
+  index: -1
+Knight Feet
+  rotate: false
+  xy: 651, 391
+  size: 17, 20
+  orig: 17, 20
+  offset: 0, 0
+  index: -1
+Knight Hand
+  rotate: false
+  xy: 518, 295
+  size: 18, 20
+  orig: 18, 20
+  offset: 0, 0
+  index: -1
+Knight Head
+  rotate: true
+  xy: 460, 277
+  size: 36, 41
+  orig: 36, 41
+  offset: 0, 0
+  index: -1
+Knight Head armor
+  rotate: false
+  xy: 200, 161
+  size: 37, 29
+  orig: 37, 29
+  offset: 0, 0
+  index: -1
+Knight Knee
+  rotate: true
+  xy: 257, 176
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+Knight Leg
+  rotate: false
+  xy: 983, 749
+  size: 12, 30
+  orig: 12, 30
+  offset: 0, 0
+  index: -1
+Knight Lower leg
+  rotate: false
+  xy: 239, 162
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: -1
+Knight Plume
+  rotate: false
+  xy: 200, 128
+  size: 28, 31
+  orig: 28, 31
+  offset: 0, 0
+  index: -1
+Knight Shoulders
+  rotate: false
+  xy: 999, 914
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+Knight Upper leg
+  rotate: true
+  xy: 917, 552
+  size: 34, 19
+  orig: 34, 19
+  offset: 0, 0
+  index: -1
+Knight arm 1
+  rotate: false
+  xy: 735, 643
+  size: 28, 26
+  orig: 28, 26
+  offset: 0, 0
+  index: -1
+Lance
+  rotate: true
+  xy: 810, 642
+  size: 137, 171
+  orig: 137, 171
+  offset: 0, 0
+  index: -1
+Lance Rotate
+  rotate: false
+  xy: 819, 781
+  size: 178, 239
+  orig: 178, 239
+  offset: 0, 0
+  index: -1
+Lance Stab
+  rotate: true
+  xy: 2, 2
+  size: 187, 196
+  orig: 187, 196
+  offset: 0, 0
+  index: -1
+Shield 1
+  rotate: false
+  xy: 853, 444
+  size: 57, 65
+  orig: 57, 65
+  offset: 0, 0
+  index: -1
+Shield 2
+  rotate: false
+  xy: 853, 378
+  size: 51, 64
+  orig: 51, 64
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 1
+  rotate: true
+  xy: 175, 589
+  size: 113, 156
+  orig: 113, 156
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 10
+  rotate: false
+  xy: 735, 322
+  size: 116, 318
+  orig: 116, 318
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 11
+  rotate: true
+  xy: 480, 671
+  size: 113, 328
+  orig: 113, 328
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 12
+  rotate: true
+  xy: 480, 906
+  size: 114, 337
+  orig: 114, 337
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 13
+  rotate: true
+  xy: 480, 786
+  size: 118, 330
+  orig: 118, 330
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 14
+  rotate: true
+  xy: 167, 192
+  size: 62, 103
+  orig: 62, 103
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 2
+  rotate: false
+  xy: 573, 413
+  size: 160, 256
+  orig: 160, 256
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 3
+  rotate: false
+  xy: 175, 704
+  size: 154, 316
+  orig: 154, 316
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 4
+  rotate: false
+  xy: 2, 191
+  size: 163, 386
+  orig: 163, 386
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 5
+  rotate: false
+  xy: 2, 579
+  size: 171, 441
+  orig: 171, 441
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 6
+  rotate: false
+  xy: 416, 378
+  size: 155, 291
+  orig: 155, 291
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 7
+  rotate: false
+  xy: 331, 711
+  size: 147, 309
+  orig: 147, 309
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 8
+  rotate: false
+  xy: 167, 256
+  size: 123, 321
+  orig: 123, 321
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 9
+  rotate: false
+  xy: 292, 268
+  size: 122, 319
+  orig: 122, 319
+  offset: 0, 0
+  index: -1
