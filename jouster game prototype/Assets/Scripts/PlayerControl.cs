@@ -127,11 +127,12 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
             switch (isAction)
             {
                 case 1:
-                    player.JabCooldownStart();
+                    
                     if (enemyInRange)
                     {
                         player.Jab(enemy.GetComponent<PlayerControllerInterface>());
                     }
+                    player.JabCooldownStart();
                     isAction = 0;
                     break;
                     
@@ -161,32 +162,5 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     {
         player.Clash(hitInfo);
     }
-    
-    private void Lose()
-    {        
-        if (transform.position.y < 0)
-        {
-            if (transform.position.y < -20)
-            {
-                if (playerID == 1)
-                {
-                    SceneManager.LoadScene(3);
-                }
-                if (playerID == 2)
-                {
-                    
-                    //SceneManager.MoveGameObjectToScene(null, 2);
-                    SceneManager.LoadScene(2);
-                }
-            }
-        }
-    }
-    
-
-    /*
-    other.gameObject.tag == "player";
-    hit.gameObject.getComponent<PlayerControl>().someFunction()
-
-    */
 }
 

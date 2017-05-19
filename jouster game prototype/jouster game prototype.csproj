@@ -101,6 +101,7 @@
     <Compile Include="Assets\Jump.cs" />
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\PlayerInterface.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\TurnCommand.cs" />

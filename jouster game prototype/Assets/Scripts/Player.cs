@@ -37,15 +37,28 @@ public class Player : MonoBehaviour
     [SerializeField] private float clashPower;
     [SerializeField] private float jabPower;
 
+    [Header("SpineAnimaties")]
+    [SerializeField] [SpineAnimation] private string idle = "0_Idle";
+    [SerializeField] [SpineAnimation] private string stap = "1_Stap";
+    [SerializeField] [SpineAnimation] private string draf = "2_Draf";
+    [SerializeField] [SpineAnimation] private string gallop = "3_Galop";
+    [SerializeField] [SpineAnimation] private string duizelig = "Duizelig";
+    [SerializeField] [SpineAnimation] private string hoge_terugslag = "Hoge_terugslag";
+    [SerializeField] [SpineAnimation] private string lage_terugslag = "Lage_terugslag";
+    [SerializeField] [SpineAnimation] private string land_Animation = "Land animation";
+    [SerializeField] [SpineAnimation] private string schild_afweer = "Schild_afweer";
+    [SerializeField] [SpineAnimation] private string schild_loop = "Schild_loop";
+    [SerializeField] [SpineAnimation] private string stoot = "Stoot";
 
-    //[Header("AudioSources")]
+    [Header("AudioSources")]
     #region
-    //public AudioSource audio;
+    [SerializeField] private AudioSource audio;
     #endregion
 
 
     IEnumerator JabCooldown()
     {
+        skeletonAnimation.state.SetAnimation(2, stoot, false);
         isOnCooldownJab = true;
         yield return new WaitForSeconds(cooldownJabInSeconds);
         isOnCooldownJab = false;
@@ -71,22 +84,28 @@ public class Player : MonoBehaviour
 
     IEnumerator StunActive()
     {
+        print("STUNN");
         isStunned = true;
+        skeletonAnimation.state.SetAnimation(0, duizelig, true);
         yield return new WaitForSeconds(stunTimeInSeconds);
+        skeletonAnimation.state.SetAnimation(0, duizelig, false); 
         isStunned = false;
         yield break;
     }
-
+    // animation does not work when starting all the time.
     public void Move()
     {
         if (!isStunned)
         {
             if (isShielding)
             {
+                
+                skeletonAnimation.state.SetAnimation(2, schild_loop, false);
                 body.AddForce(((invertedMove) ? Vector2.left : Vector2.right) * (speed * (percentageSpeedDecrease / 100)));
             }
             else
             {
+                
                 body.AddForce(((invertedMove) ? Vector2.left : Vector2.right) * speed);
             }
         }
@@ -103,7 +122,6 @@ public class Player : MonoBehaviour
         {
             //knightAnim.SetTrigger("Block");
             StartCoroutine("ShieldActive");
-            print("isaction = 2 = shielding");
             StartCoroutine("ShieldCooldown");
 
         }
@@ -116,8 +134,10 @@ public class Player : MonoBehaviour
 
     public void Jab(PlayerControllerInterface enemy)
     {
+        print("werkt dit? " + isOnCooldownJab);
         if (!isOnCooldownJab)
             {
+            print("werkt dit niet?");
             //body.AddForce(Vector2.right * ((invertedMove) ? -1 : 1) * (baseKnockback));
             //body.AddForce(Vector2.up * knockbackHeight);
             enemy.GetJabbed(retrieveHitInfo());
@@ -128,16 +148,20 @@ public class Player : MonoBehaviour
     {
         if (speedUp)
         {
+            skeletonAnimation.state.SetAnimation(1, draf, true);
             speed = speed + speedIncreace;
         }
         else
         {
+            skeletonAnimation.state.SetAnimation(1, gallop, true);
             speed = speed - speedIncreace;
         }
     }
 
     public void GetJabbed(float enemySpeed)
-    {      
+    {
+        print("test");
+        StartCoroutine("StunActive");
         if (enemySpeed > speed)
         {
             // bereknening hoge knockback
@@ -150,9 +174,7 @@ public class Player : MonoBehaviour
             // berekening lage knockback
             baseKnockback = baseKnockback + lowerSpeedKnockbackIncrease;
             KnockbackCalculation(jabPower);
-
-        }
-        StartCoroutine("StunActive");
+        }        
     }
 
     public void Clash(HitInfo enemy)
@@ -172,7 +194,6 @@ public class Player : MonoBehaviour
         }
         if (isShielding)
         {
-            print("stun in clash");
             StartCoroutine("StunActive");
         }
     }
