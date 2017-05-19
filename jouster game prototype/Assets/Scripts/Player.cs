@@ -124,6 +124,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SpeedChange(bool speedUp)
+    {
+        if (speedUp)
+        {
+            speed = speed + speedIncreace;
+        }
+        else
+        {
+            speed = speed - speedIncreace;
+        }
+    }
+
     public void GetJabbed(float enemySpeed)
     {      
         if (enemySpeed > speed)

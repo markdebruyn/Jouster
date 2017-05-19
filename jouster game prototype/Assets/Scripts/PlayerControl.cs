@@ -101,12 +101,12 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
         #region Player Input
         if (Input.GetKeyUp(speedUp))
         {
-            //speed = speed + speedIncreace;
+            player.SpeedChange(true);
         }
 
         if (Input.GetKeyUp(speedDown))
         {
-            //speed = speed - speedIncreace;
+            player.SpeedChange(false);
         }
         
         if (Input.GetKeyUp(jabKey))
@@ -161,19 +161,18 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     {
         player.Clash(hitInfo);
     }
-    /*
+    
     private void Lose()
-    {
-        if (trans.position.y < 0)
+    {        
+        if (transform.position.y < 0)
         {
-            if (trans.position.y < -20)
+            if (transform.position.y < -20)
             {
                 if (playerID == 1)
                 {
                     SceneManager.LoadScene(3);
                 }
                 if (playerID == 2)
-
                 {
                     
                     //SceneManager.MoveGameObjectToScene(null, 2);
@@ -182,7 +181,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
             }
         }
     }
-    */
+    
 
     /*
     other.gameObject.tag == "player";
