@@ -162,6 +162,7 @@
     <None Include="Assets\Examples\Spine\Spineboy\spineboy.atlas.txt" />
     <None Include="Assets\Examples\Spine\Spineunitygirl\Doi.atlas.txt" />
     <None Include="Assets\Examples\Spine\Strechyman\stretchyman-diffuse-pma.atlas.txt" />
+    <None Include="Assets\Spine Animaties\Horse Animatie 2\Horse.atlas.txt" />
     <None Include="Assets\Spine Animaties\Horse animation\Horse.atlas.txt" />
     <None Include="Assets\spine-unity\Editor\Resources\SpineAssetDatabaseMarker.txt" />
     <None Include="Assets\spine-unity\Modules\CustomMaterials\SkeletonRendererCustomMaterials.txt" />

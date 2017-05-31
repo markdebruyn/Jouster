@@ -1,0 +1,580 @@
+
+Horse.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images_char_blue/BC voorkant shield
+  rotate: true
+  xy: 927, 668
+  size: 49, 95
+  orig: 49, 95
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L arm
+  rotate: false
+  xy: 992, 895
+  size: 28, 35
+  orig: 28, 35
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L bovenbeen
+  rotate: true
+  xy: 88, 2
+  size: 9, 36
+  orig: 9, 36
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L elleboog
+  rotate: true
+  xy: 212, 2
+  size: 12, 15
+  orig: 12, 15
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L hand
+  rotate: true
+  xy: 898, 621
+  size: 19, 21
+  orig: 19, 21
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L laars
+  rotate: true
+  xy: 57, 7
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L onderarm
+  rotate: false
+  xy: 338, 237
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L onderbeen
+  rotate: false
+  xy: 41, 2
+  size: 14, 27
+  orig: 14, 27
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc L schouder
+  rotate: false
+  xy: 992, 932
+  size: 28, 39
+  orig: 28, 39
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc R schouder
+  rotate: false
+  xy: 998, 771
+  size: 23, 34
+  orig: 23, 34
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc Schakelzij
+  rotate: true
+  xy: 175, 582
+  size: 7, 13
+  orig: 7, 13
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc achterkant shield
+  rotate: true
+  xy: 927, 719
+  size: 50, 95
+  orig: 50, 95
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc body
+  rotate: true
+  xy: 167, 193
+  size: 63, 87
+  orig: 63, 87
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc helm
+  rotate: false
+  xy: 303, 230
+  size: 33, 38
+  orig: 33, 38
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc l knie
+  rotate: false
+  xy: 229, 3
+  size: 13, 11
+  orig: 13, 11
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc laatsteschakel
+  rotate: true
+  xy: 458, 695
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc pike
+  rotate: true
+  xy: 819, 871
+  size: 151, 171
+  orig: 151, 171
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc pike_jab
+  rotate: true
+  xy: 696, 190
+  size: 253, 53
+  orig: 253, 53
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc pike_rotate1
+  rotate: true
+  xy: 691, 445
+  size: 226, 125
+  orig: 226, 125
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc pluim
+  rotate: true
+  xy: 998, 832
+  size: 25, 24
+  orig: 25, 24
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc schakelvoor
+  rotate: false
+  xy: 806, 431
+  size: 10, 12
+  orig: 10, 12
+  offset: 0, 0
+  index: -1
+images_char_blue/Bc vizier
+  rotate: false
+  xy: 898, 678
+  size: 27, 19
+  orig: 27, 19
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp V schouder
+  rotate: false
+  xy: 872, 567
+  size: 33, 52
+  orig: 33, 52
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp a schouder
+  rotate: false
+  xy: 872, 519
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp body achter
+  rotate: false
+  xy: 810, 699
+  size: 115, 80
+  orig: 115, 80
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp body voor
+  rotate: false
+  xy: 818, 621
+  size: 78, 76
+  orig: 78, 76
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp bovennek
+  rotate: false
+  xy: 256, 195
+  size: 45, 61
+  orig: 45, 61
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp hoef
+  rotate: false
+  xy: 458, 680
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp hoofd
+  rotate: false
+  xy: 806, 191
+  size: 50, 47
+  orig: 50, 47
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp knie
+  rotate: true
+  xy: 907, 567
+  size: 15, 13
+  orig: 15, 13
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp middennek
+  rotate: false
+  xy: 260, 129
+  size: 46, 64
+  orig: 46, 64
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp onderbeen
+  rotate: true
+  xy: 371, 249
+  size: 19, 33
+  orig: 19, 33
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp ondernek
+  rotate: false
+  xy: 992, 973
+  size: 28, 49
+  orig: 28, 49
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp oor voor
+  rotate: false
+  xy: 234, 16
+  size: 17, 13
+  orig: 17, 13
+  offset: 0, 0
+  index: -1
+images_char_blue/Bp v beendeel
+  rotate: false
+  xy: 898, 642
+  size: 19, 34
+  orig: 19, 34
+  offset: 0, 0
+  index: -1
+images_char_red/Rc Kaak
+  rotate: false
+  xy: 333, 591
+  size: 34, 26
+  orig: 34, 26
+  offset: 0, 0
+  index: -1
+images_char_red/Rc L bovenbeen
+  rotate: false
+  xy: 858, 274
+  size: 10, 28
+  orig: 10, 28
+  offset: 0, 0
+  index: -1
+images_char_red/Rc L hand
+  rotate: true
+  xy: 998, 807
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: -1
+images_char_red/Rc a schield
+  rotate: false
+  xy: 818, 420
+  size: 52, 97
+  orig: 52, 97
+  offset: 0, 0
+  index: -1
+images_char_red/Rc a schouder
+  rotate: true
+  xy: 2, 4
+  size: 25, 37
+  orig: 25, 37
+  offset: 0, 0
+  index: -1
+images_char_red/Rc body
+  rotate: false
+  xy: 934, 771
+  size: 62, 98
+  orig: 62, 98
+  offset: 0, 0
+  index: -1
+images_char_red/Rc bovenarm
+  rotate: true
+  xy: 369, 592
+  size: 25, 39
+  orig: 25, 39
+  offset: 0, 0
+  index: -1
+images_char_red/Rc helm
+  rotate: true
+  xy: 260, 30
+  size: 37, 38
+  orig: 37, 38
+  offset: 0, 0
+  index: -1
+images_char_red/Rc heup
+  rotate: true
+  xy: 998, 859
+  size: 34, 24
+  orig: 34, 24
+  offset: 0, 0
+  index: -1
+images_char_red/Rc knie
+  rotate: false
+  xy: 194, 12
+  size: 16, 17
+  orig: 16, 17
+  offset: 0, 0
+  index: -1
+images_char_red/Rc onderarm
+  rotate: false
+  xy: 303, 195
+  size: 35, 33
+  orig: 35, 33
+  offset: 0, 0
+  index: -1
+images_char_red/Rc onderbeen
+  rotate: true
+  xy: 122, 13
+  size: 16, 25
+  orig: 16, 25
+  offset: 0, 0
+  index: -1
+images_char_red/Rc pike_jab
+  rotate: true
+  xy: 751, 190
+  size: 253, 53
+  orig: 253, 53
+  offset: 0, 0
+  index: -1
+images_char_red/Rc pike_rotate1
+  rotate: true
+  xy: 569, 125
+  size: 226, 125
+  orig: 226, 125
+  offset: 0, 0
+  index: -1
+images_char_red/Rc pluim
+  rotate: true
+  xy: 872, 472
+  size: 45, 42
+  orig: 45, 42
+  offset: 0, 0
+  index: -1
+images_char_red/Rc schouder
+  rotate: false
+  xy: 872, 429
+  size: 38, 41
+  orig: 38, 41
+  offset: 0, 0
+  index: -1
+images_char_red/Rc speer
+  rotate: false
+  xy: 416, 207
+  size: 151, 171
+  orig: 151, 171
+  offset: 0, 0
+  index: -1
+images_char_red/Rc v shield
+  rotate: false
+  xy: 818, 519
+  size: 52, 100
+  orig: 52, 100
+  offset: 0, 0
+  index: -1
+images_char_red/Rc voet
+  rotate: true
+  xy: 149, 11
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: -1
+images_char_red/Rp A heup
+  rotate: true
+  xy: 410, 673
+  size: 38, 46
+  orig: 38, 46
+  offset: 0, 0
+  index: -1
+images_char_red/Rp achterlichaam
+  rotate: true
+  xy: 333, 619
+  size: 92, 75
+  orig: 92, 75
+  offset: 0, 0
+  index: -1
+images_char_red/Rp borst
+  rotate: false
+  xy: 812, 781
+  size: 120, 88
+  orig: 120, 88
+  offset: 0, 0
+  index: -1
+images_char_red/Rp bovenbeen
+  rotate: false
+  xy: 308, 134
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: -1
+images_char_red/Rp bovennek
+  rotate: false
+  xy: 806, 304
+  size: 62, 56
+  orig: 62, 56
+  offset: 0, 0
+  index: -1
+images_char_red/Rp hoef
+  rotate: true
+  xy: 907, 584
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+images_char_red/Rp hoofd
+  rotate: false
+  xy: 806, 362
+  size: 63, 56
+  orig: 63, 56
+  offset: 0, 0
+  index: -1
+images_char_red/Rp knie
+  rotate: false
+  xy: 175, 12
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: -1
+images_char_red/Rp middennek
+  rotate: false
+  xy: 806, 240
+  size: 50, 62
+  orig: 50, 62
+  offset: 0, 0
+  index: -1
+images_char_red/Rp onderbeen
+  rotate: true
+  xy: 88, 13
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+images_char_red/Rp ondernek
+  rotate: false
+  xy: 260, 69
+  size: 39, 58
+  orig: 39, 58
+  offset: 0, 0
+  index: -1
+images_char_red/Rp oor
+  rotate: true
+  xy: 212, 16
+  size: 13, 20
+  orig: 13, 20
+  offset: 0, 0
+  index: -1
+images_char_red/Rp staart
+  rotate: true
+  xy: 907, 602
+  size: 17, 15
+  orig: 17, 15
+  offset: 0, 0
+  index: -1
+images_char_red/Rp staart eind
+  rotate: false
+  xy: 308, 168
+  size: 28, 25
+  orig: 28, 25
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 1
+  rotate: true
+  xy: 175, 591
+  size: 113, 156
+  orig: 113, 156
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 10
+  rotate: false
+  xy: 573, 353
+  size: 116, 318
+  orig: 116, 318
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 11
+  rotate: true
+  xy: 480, 673
+  size: 113, 328
+  orig: 113, 328
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 12
+  rotate: true
+  xy: 480, 908
+  size: 114, 337
+  orig: 114, 337
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 13
+  rotate: true
+  xy: 480, 788
+  size: 118, 330
+  orig: 118, 330
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 14
+  rotate: true
+  xy: 696, 126
+  size: 62, 103
+  orig: 62, 103
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 2
+  rotate: true
+  xy: 2, 31
+  size: 160, 256
+  orig: 160, 256
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 3
+  rotate: false
+  xy: 175, 706
+  size: 154, 316
+  orig: 154, 316
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 4
+  rotate: false
+  xy: 2, 193
+  size: 163, 386
+  orig: 163, 386
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 5
+  rotate: false
+  xy: 2, 581
+  size: 171, 441
+  orig: 171, 441
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 6
+  rotate: false
+  xy: 416, 380
+  size: 155, 291
+  orig: 155, 291
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 7
+  rotate: false
+  xy: 331, 713
+  size: 147, 309
+  orig: 147, 309
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 8
+  rotate: false
+  xy: 167, 258
+  size: 123, 321
+  orig: 123, 321
+  offset: 0, 0
+  index: -1
+shield_effect/Frame 9
+  rotate: false
+  xy: 292, 270
+  size: 122, 319
+  orig: 122, 319
+  offset: 0, 0
+  index: -1

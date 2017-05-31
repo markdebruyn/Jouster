@@ -78,9 +78,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Audio_Play_Script.cs" />
-    <Compile Include="Assets\Back_To_Start.cs" />
-    <Compile Include="Assets\Class1.cs" />
+    <Compile Include="Assets\Custom Scripts\GameControl.cs" />
+    <Compile Include="Assets\Custom Scripts\GameFlowControl.cs" />
+    <Compile Include="Assets\Custom Scripts\Player.cs" />
+    <Compile Include="Assets\Custom Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Custom Scripts\PlayerInterface.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\Back_To_Start.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\Class1.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\Jump.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\Movement.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\TurnCommand.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\est.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\movement2.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\start_Game.cs" />
+    <Compile Include="Assets\Custom Scripts\Scritps Old\test.cs" />
     <Compile Include="Assets\Examples\Getting Started\Scripts\BasicPlatformerController.cs" />
     <Compile Include="Assets\Examples\Getting Started\Scripts\ConstrainedCamera.cs" />
     <Compile Include="Assets\Examples\Getting Started\Scripts\Raptor.cs" />
@@ -98,15 +109,6 @@
     <Compile Include="Assets\Examples\Scripts\SpineGauge.cs" />
     <Compile Include="Assets\Examples\Scripts\Spineboy.cs" />
     <Compile Include="Assets\Examples\Scripts\SpineboyPole.cs" />
-    <Compile Include="Assets\Jump.cs" />
-    <Compile Include="Assets\Movement.cs" />
-    <Compile Include="Assets\PlayerInterface.cs" />
-    <Compile Include="Assets\Scripts\GameControl.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerControl.cs" />
-    <Compile Include="Assets\TurnCommand.cs" />
-    <Compile Include="Assets\est.cs" />
-    <Compile Include="Assets\movement2.cs" />
     <Compile Include="Assets\spine-csharp\Animation.cs" />
     <Compile Include="Assets\spine-csharp\AnimationState.cs" />
     <Compile Include="Assets\spine-csharp\AnimationStateData.cs" />
@@ -185,8 +187,6 @@
     <Compile Include="Assets\spine-unity\SkeletonUtility\SkeletonUtilityBone.cs" />
     <Compile Include="Assets\spine-unity\SkeletonUtility\SkeletonUtilityConstraint.cs" />
     <Compile Include="Assets\spine-unity\SpineAttributes.cs" />
-    <Compile Include="Assets\start_Game.cs" />
-    <Compile Include="Assets\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Examples\Spine\Dragon\dragon.atlas.txt" />
@@ -204,6 +204,7 @@
     <None Include="Assets\Examples\Spine\Spineboy\spineboy.atlas.txt" />
     <None Include="Assets\Examples\Spine\Spineunitygirl\Doi.atlas.txt" />
     <None Include="Assets\Examples\Spine\Strechyman\stretchyman-diffuse-pma.atlas.txt" />
+    <None Include="Assets\Spine Animaties\Horse Animatie 2\Horse.atlas.txt" />
     <None Include="Assets\Spine Animaties\Horse animation\Horse.atlas.txt" />
     <None Include="Assets\spine-unity\Editor\Resources\SpineAssetDatabaseMarker.txt" />
     <None Include="Assets\spine-unity\Modules\CustomMaterials\SkeletonRendererCustomMaterials.txt" />
