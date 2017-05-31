@@ -16,10 +16,10 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     
     
 
-    bool stunned = false;
+ //   bool stunned = false;
 
-    public float stunTimeInSeconds;
-    float timeStampStun;
+//    public float stunTimeInSeconds;
+//    float timeStampStun;
 
 
 
@@ -71,6 +71,11 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
         player.Move();
        
        // if (!stunned && trans.position.y >= 0.5f) player.Move();
+    }
+
+    public HitInfo retrieveHitInfo()
+    {
+        return player.retrieveHitInfo();
     }
 
     // Update is called once per frame

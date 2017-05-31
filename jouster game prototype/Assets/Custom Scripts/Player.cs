@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
 
     IEnumerator JabCooldown()
     {
-        skeletonAnimation.state.SetAnimation(2, stoot, false);
         isOnCooldownJab = true;
         yield return new WaitForSeconds(cooldownJabInSeconds);
         isOnCooldownJab = false;
@@ -135,9 +134,19 @@ public class Player : MonoBehaviour
 
     public void Jab(PlayerControllerInterface enemy)
     {
-        if (!isOnCooldownJab && !isShielding && !isStunned)
+        if (!isOnCooldownJab && isShielding && !isStunned)
         {
-            enemy.GetJabbed(retrieveHitInfo());
+            HitInfo enemyhitInfo = enemy.retrieveHitInfo();
+            if (enemyhitInfo.isShielded)
+            {
+                skeletonAnimation.state.SetAnimation(2, stoot, false);
+                enemy.GetJabbed(retrieveHitInfo());
+            }
+            else
+            {
+                skeletonAnimation.state.SetAnimation(2, stoot, false);
+                GetJabbed(enemyhitInfo.speed);
+            }
         }
     }
 

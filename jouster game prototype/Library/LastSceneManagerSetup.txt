@@ -11,3 +11,12 @@ sceneSetups:
 - path: Assets/Scenes/gamescene.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Scenes/Tutorial Screen.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/Menuscreen.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/EndScreen.unity
+  isLoaded: 0
+  isActive: 0
