@@ -126,6 +126,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
         switch (isAction)
         {
             case 1:
+                print("input for jab works");
                     if (enemyInRange)
                     {
                         player.Jab(enemy.GetComponent<PlayerControllerInterface>());

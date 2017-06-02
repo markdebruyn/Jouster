@@ -1,7 +1,7 @@
 sceneSetups:
 - path: Assets/Scenes/Startscreen.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scenes/Player2 Wins.unity
   isLoaded: 0
   isActive: 0
@@ -9,8 +9,8 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/gamescene.unity
-  isLoaded: 0
-  isActive: 0
+  isLoaded: 1
+  isActive: 1
 - path: Assets/Scenes/Tutorial Screen.unity
   isLoaded: 0
   isActive: 0

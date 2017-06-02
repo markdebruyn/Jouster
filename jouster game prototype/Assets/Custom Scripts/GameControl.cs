@@ -127,4 +127,9 @@ public sealed class GameControl : MonoBehaviour
     {
         SceneManager.LoadScene((int)(ScenesEnum.TutorialScreen));
     }
+
+    public void ChangeToStartScreen()
+    {
+        SceneManager.LoadScene((int)(ScenesEnum.StartScreen));
+    }
 }

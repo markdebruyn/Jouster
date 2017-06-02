@@ -48,14 +48,15 @@ public class Player : MonoBehaviour
     [SerializeField] [SpineAnimation] private string schild_afweer = "Schild_afweer";
     [SerializeField] [SpineAnimation] private string schild_loop = "Schild_loop";
     [SerializeField] [SpineAnimation] private string stoot = "Stoot";
+    [SerializeField] [SpineAnimation] private string ridderIdle = "Basis pose ridder";
     private string moveSpeedString;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float drafSpeed;
     [SerializeField] private float gallopSpeed;
 
-    [Header("AudioSources")]
+    //[Header("AudioSources")]
     #region
-    [SerializeField] private AudioSource audio;
+    //[SerializeField] private AudioSource audio;
     #endregion
 
 
@@ -64,27 +65,32 @@ public class Player : MonoBehaviour
         if (!isOnCooldownJab)
         {
             skeletonAnimation.state.SetAnimation(2, stoot, false);
-        }
-        isOnCooldownJab = true;
+            isOnCooldownJab = true;
+        }        
         yield return new WaitForSeconds(cooldownJabInSeconds);
         isOnCooldownJab = false;
+        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
+        StopCoroutine("JabCooldown");
         yield break;
     }
 
     IEnumerator ShieldCooldown()
     {
-
         isOnCooldownShield = true;
         yield return new WaitForSeconds(cooldownShieldInSeconds);
         isOnCooldownShield = false;
+        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
+        StopCoroutine("ShieldCooldown");
         yield break;
     }
 
     IEnumerator ShieldActive()
     {
         isShielding = true;
+        skeletonAnimation.state.SetAnimation(2, schild_loop, true);
         yield return new WaitForSeconds(shieldAcitveTime);
         isShielding = false;
+        StopCoroutine("ShieldActive");
         yield break;
     }
 
@@ -96,6 +102,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(stunTimeInSeconds);
         skeletonAnimation.state.SetAnimation(0, duizelig, false); 
         isStunned = false;
+        StopCoroutine("StunActive");
         yield break;
     }
     // animation does not work when starting all the time.
@@ -143,11 +150,11 @@ public class Player : MonoBehaviour
             HitInfo enemyhitInfo = enemy.retrieveHitInfo();
             if (enemyhitInfo.isShielded)
             {
-                enemy.GetJabbed(RetrieveHitInfo());
+                GetJabbed(enemyhitInfo.speed);
             }
             else
             {
-                GetJabbed(enemyhitInfo.speed);
+                enemy.GetJabbed(RetrieveHitInfo());
             }
         }
     }
