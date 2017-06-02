@@ -47,7 +47,8 @@ public sealed class GameControl : MonoBehaviour
     static int redMatchWins = 0;
     static int gameWinsBlue = 0;
     static int gameWinsRed = 0;
-    [SerializeField] int amountOfMatches = 3;
+    // change does not work 
+    static int amountOfMatches = 3;
 
     void Start()
     {
