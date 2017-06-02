@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public HitInfo retrieveHitInfo()
+    public HitInfo RetrieveHitInfo()
     {
         return new HitInfo(isShielding, isStunned, speed);
     }
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             if (enemyhitInfo.isShielded)
             {
                 skeletonAnimation.state.SetAnimation(2, stoot, false);
-                enemy.GetJabbed(retrieveHitInfo());
+                enemy.GetJabbed(RetrieveHitInfo());
             }
             else
             {
@@ -155,16 +155,16 @@ public class Player : MonoBehaviour
         if (speedUp)
         {
             speed = speed + speedIncreace;
-            SpeedAnimationSchange();
+            SpeedAnimationsChange();
         }
         else
         {            
             speed = speed - speedIncreace;
-            SpeedAnimationSchange();
+            SpeedAnimationsChange();
         }
     }
 
-    private void SpeedAnimationSchange()
+    private void SpeedAnimationsChange()
     {
         if (speed < drafSpeed && moveSpeedString != walk)
         {
@@ -236,7 +236,8 @@ public struct HitInfo
     public bool stunned;
     public float speed;
     
-    public HitInfo(bool isShield, bool isStun, float currentSpeed) {
+    public HitInfo(bool isShield, bool isStun, float currentSpeed)
+    {
         this.isShielded = isShield;
         this.stunned = isStun;
         this.speed = currentSpeed;

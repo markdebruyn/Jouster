@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     {
         if (collision.gameObject.tag != tag && collision.gameObject.tag != "Untagged")
         {
-            collision.gameObject.GetComponent<PlayerControllerInterface>().Clash(player.retrieveHitInfo());
+            collision.gameObject.GetComponent<PlayerControllerInterface>().Clash(player.RetrieveHitInfo());
         }
     }
 
@@ -75,7 +75,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
 
     public HitInfo retrieveHitInfo()
     {
-        return player.retrieveHitInfo();
+        return player.RetrieveHitInfo();
     }
 
     // Update is called once per frame
@@ -147,7 +147,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
 
     public void GetJabbed(HitInfo hitInfo)
     {
-        HitInfo playerInfo = player.retrieveHitInfo();
+        HitInfo playerInfo = player.RetrieveHitInfo();
         if (playerInfo.isShielded)
         {
             enemy.GetComponent<PlayerControllerInterface>().GetJabbed(playerInfo);
