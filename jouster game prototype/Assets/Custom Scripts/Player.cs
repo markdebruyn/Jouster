@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
         isOnCooldownShield = true;
         yield return new WaitForSeconds(cooldownShieldInSeconds);
         isOnCooldownShield = false;
-        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
         StopCoroutine("ShieldCooldown");
         yield break;
     }
@@ -89,6 +88,7 @@ public class Player : MonoBehaviour
         isShielding = true;
         skeletonAnimation.state.SetAnimation(2, schild_loop, true);
         yield return new WaitForSeconds(shieldAcitveTime);
+        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
         isShielding = false;
         StopCoroutine("ShieldActive");
         yield break;
