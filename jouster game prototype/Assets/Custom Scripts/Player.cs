@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
     {
         print("STUNN");
         isStunned = true;
+        skeletonAnimation.state.SetAnimation(2, ridderIdle, false);
         skeletonAnimation.state.SetAnimation(0, duizelig, true);
         yield return new WaitForSeconds(stunTimeInSeconds);
         skeletonAnimation.state.SetAnimation(0, duizelig, false); 
