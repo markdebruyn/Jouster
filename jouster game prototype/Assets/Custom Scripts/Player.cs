@@ -1,7 +1,5 @@
 ﻿using Spine.Unity;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,19 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private SkeletonAnimation skeletonAnimation;
 
-
     [Header("Cooldown & Stun")]
-    [SerializeField] private float shieldAcitveTime;
+    [SerializeField] private float shieldAcitveTimeInSeconds;
     [SerializeField] private float cooldownShieldInSeconds;
     [SerializeField] private float stunTimeInSeconds;
     [SerializeField] private float cooldownJabInSeconds;
-    public bool isOnCooldownShield = false;
-    public bool isShielding = false;
-    public bool isStunned = false;
-    public bool isOnCooldownJab = false;
-    
-
-
+    private bool isOnCooldownShield = false;
+    private bool isShielding = false;
+    private bool isStunned = false;
+    private bool isOnCooldownJab = false;
 
     [Header("knockback power & Speed")]
     [SerializeField] private bool invertedMove = false;
@@ -36,6 +30,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float clashPower;
     [SerializeField] private float jabPower;
 
+    #region "Animations"
     [Header("SpineAnimaties")]
     [SerializeField] [SpineAnimation] private string idle = "0_Idle";
     [SerializeField] [SpineAnimation] private string walk = "1_Stap";
@@ -48,16 +43,23 @@ public class Player : MonoBehaviour
     [SerializeField] [SpineAnimation] private string schild_afweer = "Schild_afweer";
     [SerializeField] [SpineAnimation] private string schild_loop = "Schild_loop";
     [SerializeField] [SpineAnimation] private string stoot = "Stoot";
-    [SerializeField] [SpineAnimation] private string ridderIdle = "Basis pose ridder";
+    [SerializeField] [SpineAnimation] private string ridder_idle = "Basis pose ridder";
     private string moveSpeedString;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float drafSpeed;
-    [SerializeField] private float gallopSpeed;
+    [SerializeField] private float galopSpeed;
+    #endregion
+
 
     //[Header("AudioSources")]
     #region
     //[SerializeField] private AudioSource audio;
     #endregion
+
+    #region "IEnummerator"
+
+    // Stop Coroutine is to stop all other instances of the same name IEnummerators.
+    //This is done for buttonspamming to prevent effects stacking and other bugs.
 
 
     IEnumerator JabCooldown()
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
         }        
         yield return new WaitForSeconds(cooldownJabInSeconds);
         isOnCooldownJab = false;
-        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
+        skeletonAnimation.state.SetAnimation(2, ridder_idle, true);
         StopCoroutine("JabCooldown");
         yield break;
     }
@@ -87,8 +89,8 @@ public class Player : MonoBehaviour
     {
         isShielding = true;
         skeletonAnimation.state.SetAnimation(2, schild_loop, true);
-        yield return new WaitForSeconds(shieldAcitveTime);
-        skeletonAnimation.state.SetAnimation(2, ridderIdle, true);
+        yield return new WaitForSeconds(shieldAcitveTimeInSeconds);
+        skeletonAnimation.state.SetAnimation(2, ridder_idle, true);
         isShielding = false;
         StopCoroutine("ShieldActive");
         yield break;
@@ -98,7 +100,7 @@ public class Player : MonoBehaviour
     {
         print("STUNN");
         isStunned = true;
-        skeletonAnimation.state.SetAnimation(2, ridderIdle, false);
+        skeletonAnimation.state.SetAnimation(2, ridder_idle, false);
         skeletonAnimation.state.SetAnimation(0, duizelig, true);
         yield return new WaitForSeconds(stunTimeInSeconds);
         skeletonAnimation.state.SetAnimation(0, duizelig, false); 
@@ -106,7 +108,44 @@ public class Player : MonoBehaviour
         StopCoroutine("StunActive");
         yield break;
     }
-    // animation does not work when starting all the time.
+
+    #endregion
+
+
+    #region "Movement"
+
+    public void SpeedChange(bool speedUp)
+    {
+        if (speedUp)
+        {
+            speed = speed + speedIncreace;
+        }
+        else
+        {
+            speed = speed - speedIncreace;
+        }
+        SpeedAnimationsChange();
+    }
+
+    private void SpeedAnimationsChange()
+    {
+        if (speed < drafSpeed && moveSpeedString != walk)
+        {
+            skeletonAnimation.state.SetAnimation(1, walk, true);
+            moveSpeedString = walk;
+        }
+        else if (speed > walkSpeed && speed < galopSpeed && moveSpeedString != draf)
+        {
+            skeletonAnimation.state.SetAnimation(1, draf, true);
+            moveSpeedString = draf;
+        }
+        else if (speed > galopSpeed && moveSpeedString != galop)
+        {
+            skeletonAnimation.state.SetAnimation(1, galop, true);
+            moveSpeedString = galop;
+        }
+    }
+
     public void Move()
     {
         if (!isStunned)
@@ -123,9 +162,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    #endregion
+
     public HitInfo RetrieveHitInfo()
     {
-        return new HitInfo(isShielding, isStunned, speed);
+        return new HitInfo(isShielding, speed);
     }
 
     public void Shield()
@@ -139,6 +180,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region "Jab"
+
     public void JabCooldownStart()
     {
         StartCoroutine("JabCooldown");
@@ -148,7 +191,7 @@ public class Player : MonoBehaviour
     {
         if (!isOnCooldownJab && !isShielding && !isStunned)
         {
-            HitInfo enemyhitInfo = enemy.retrieveHitInfo();
+            HitInfo enemyhitInfo = enemy.RetrieveHitInfo();
             if (enemyhitInfo.isShielded)
             {
                 GetJabbed(enemyhitInfo.speed);
@@ -160,45 +203,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SpeedChange(bool speedUp)
-    {
-        if (speedUp)
-        {
-            speed = speed + speedIncreace;
-            SpeedAnimationsChange();
-        }
-        else
-        {            
-            speed = speed - speedIncreace;
-            SpeedAnimationsChange();
-        }
-    }
-
-    private void SpeedAnimationsChange()
-    {
-        if (speed < drafSpeed && moveSpeedString != walk)
-        {
-            skeletonAnimation.state.SetAnimation(1, walk, true);
-            moveSpeedString = walk;
-        }
-        else if (speed > walkSpeed && speed < gallopSpeed && moveSpeedString != draf)
-        {
-            skeletonAnimation.state.SetAnimation(1, draf, true);
-            moveSpeedString = draf;
-        }
-        else if (speed > gallopSpeed && moveSpeedString != galop)
-        {
-            skeletonAnimation.state.SetAnimation(1, galop, true);
-            moveSpeedString = galop;
-        }
-    }
-
     public void GetJabbed(float enemySpeed)
     {
         StartCoroutine("StunActive");
         if (enemySpeed > speed)
         {
-            // bereknening hoge knockback
+            // berekening hoge knockback
             baseKnockback = baseKnockback + higherSpeedKnockbackIncrease;
             KnockbackCalculation(jabPower);
 
@@ -208,8 +218,10 @@ public class Player : MonoBehaviour
             // berekening lage knockback
             baseKnockback = baseKnockback + lowerSpeedKnockbackIncrease;
             KnockbackCalculation(jabPower);
-        }        
+        }
     }
+
+    #endregion
 
     public void Clash(HitInfo enemy)
     {
@@ -234,7 +246,6 @@ public class Player : MonoBehaviour
 
     private void KnockbackCalculation(float knockback)
     {
-        print("pushback");
         body.AddForce(((!invertedMove) ? Vector2.left : Vector2.right) * (baseKnockback + knockback));
         body.AddForce(Vector2.up * knockbackHeight);
     }
@@ -243,13 +254,11 @@ public class Player : MonoBehaviour
 public struct HitInfo
 {
     public bool isShielded;
-    public bool stunned;
     public float speed;
     
-    public HitInfo(bool isShield, bool isStun, float currentSpeed)
+    public HitInfo(bool isShield, float currentSpeed)
     {
         this.isShielded = isShield;
-        this.stunned = isStun;
         this.speed = currentSpeed;
     }
 }

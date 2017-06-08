@@ -9,7 +9,7 @@ public sealed class GameControl : MonoBehaviour
     /*
      This Region is what makes this class a Singleton. 
      The padlock is to prevent multiple treads from potentionally creating another instance.
-     
+     Essentailly makes sure the can only be one instance of this class.
     */
     private static GameControl instance = null;
     private static readonly object padlock = new object();
@@ -30,6 +30,8 @@ public sealed class GameControl : MonoBehaviour
     }
     #endregion
 
+
+    //easy naming of the screens to prevent having to use magic numbers, if the numbers in Unity change this has to change aswell
     private enum ScenesEnum
     {
         StartScreen = 0,
@@ -41,14 +43,14 @@ public sealed class GameControl : MonoBehaviour
         EndScreen = 6,
     }
 
-    // To make sure the values are not reset after scene schange
-    static int gameRound = 0;
-    static int blueMatchWins = 0;
-    static int redMatchWins = 0;
-    static int gameWinsBlue = 0;
-    static int gameWinsRed = 0;
-    // change does not work 
-    static int amountOfMatches = 3;
+    //static to make sure the values are not reset after scene schange
+    static private int gameRound = 0;
+    static private int blueMatchWins = 0;
+    static private int redMatchWins = 0;
+    static private int gameWinsBlue = 0;
+    static private int gameWinsRed = 0;
+    // change does not work, TODO still needs fixing // test if works
+    [SerializeField] int amountOfMatches = 3;
 
     void Start()
     {
@@ -95,8 +97,7 @@ public sealed class GameControl : MonoBehaviour
     }
 
     private void GameWin()
-    {
-        
+    {        
         if (blueMatchWins > redMatchWins)
         {
             gameWinsBlue++;

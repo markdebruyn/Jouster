@@ -1,32 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour, PlayerControllerInterface
 {
-    [SerializeField] public Player player;
-
+    [SerializeField] private Player player;
 
     public GameObject enemy;
     public int playerID;
-    int isAction;
-    bool enemyInRange = false;
+    private int isAction;
+    private bool enemyInRange = false;
     
-    
-
- //   bool stunned = false;
-
-//    public float stunTimeInSeconds;
-//    float timeStampStun;
-
-
-
-
-    //int timecounter;
-    //public float cooldownJabInSeconds;
-
     [Header("input")]
     public KeyCode speedDown;
     public KeyCode speedUp;
@@ -37,6 +19,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     // Use this for initialization
     void Start()
     {
+        // Dirty way of starting animation, when continues input is a fact this is unneeded.
         player.SpeedChange(true);
         player.SpeedChange(false);
     }
@@ -68,12 +51,11 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
 
     private void FixedUpdate()
     {
-        player.Move();
-       
-       // if (!stunned && trans.position.y >= 0.5f) player.Move();
+        player.Move();   
     }
 
-    public HitInfo retrieveHitInfo()
+    // so the other player can get this players HitInfo during a hit
+    public HitInfo RetrieveHitInfo()
     {
         return player.RetrieveHitInfo();
     }
@@ -81,29 +63,6 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     // Update is called once per frame
     void Update()
     {
-        /*
-        //blockAnimation.Play(0);
-        if (shielded)
-        {
-            shieldLength += Time.deltaTime;         
-            print(shieldTime + " JAB ME!");
-            if (shieldLength > shieldTime)
-            {
-                shielded = false;
-                shieldLength = 0f;
-            }
-        }
-
-        if (stunned)
-        {
-            stunLength += Time.deltaTime;
-            if (stunLength > stunTimeInSeconds)
-            {
-                stunned = false;
-                stunLength = 0f;
-            }
-        }
-        */
         #region Player Input
         if (Input.GetKeyUp(speedUp))
         {
@@ -123,10 +82,11 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
         }
 
         #endregion
+        // old code, still works but consider using an if statement instead of a switch
+        // cannot be placed instead of the isAction number change because that would mean multiple input would be possible... potentonally
         switch (isAction)
         {
             case 1:
-                print("input for jab works");
                     if (enemyInRange)
                     {
                         player.Jab(enemy.GetComponent<PlayerControllerInterface>());
@@ -145,14 +105,15 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
         }
     }
     
-
     public void GetJabbed(HitInfo hitInfo)
     {
         HitInfo playerInfo = player.RetrieveHitInfo();
         if (playerInfo.isShielded)
         {
             enemy.GetComponent<PlayerControllerInterface>().GetJabbed(playerInfo);
-        } else {
+        }
+        else
+        {
             player.GetJabbed(hitInfo.speed);
         }
     }

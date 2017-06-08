@@ -4,10 +4,9 @@ public class start_Game : MonoBehaviour
 {
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.JoystickButton1))
         {
-            //GameControl.Instance.ChangeToMenuScreen();
-            GameControl.Instance.ChangeToBattleScreen();
+            GameControl.Instance.ChangeToMenuScreen();
         }
     }
 }
