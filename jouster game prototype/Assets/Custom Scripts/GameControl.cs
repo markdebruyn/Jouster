@@ -52,6 +52,15 @@ public sealed class GameControl : MonoBehaviour
     // change does not work, TODO still needs fixing // test if works
     [SerializeField] int amountOfMatches = 3;
 
+    public int RetriveGamesWonBlue()
+    {
+        return blueMatchWins;
+    }
+    public int RetriveGamesWonRed()
+    {
+        return redMatchWins;
+    }
+
     void Start()
     {
         // On load all non-static variables will be reset!
@@ -73,7 +82,7 @@ public sealed class GameControl : MonoBehaviour
     private void BlueWin()
     {
         blueMatchWins++;
-        if ((blueMatchWins + redMatchWins) == amountOfMatches)
+        if (blueMatchWins == amountOfMatches)
         {
             GameWin();
         }
@@ -86,7 +95,7 @@ public sealed class GameControl : MonoBehaviour
     private void RedWin()
     {
         redMatchWins++;
-        if ((blueMatchWins + redMatchWins) == amountOfMatches)
+        if (redMatchWins == amountOfMatches)
         {
             GameWin();
         }

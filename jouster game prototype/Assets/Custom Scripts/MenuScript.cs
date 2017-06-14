@@ -6,11 +6,11 @@ public class MenuScript : MonoBehaviour {
 
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.JoystickButton1) || Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.JoystickButton1) || Input.GetKeyUp(KeyCode.B))
         {
             GameControl.Instance.ChangeToTutorialScreen();
         }
-        if (Input.GetKeyUp(KeyCode.JoystickButton0) || Input.GetKeyUp(KeyCode.B))
+        if (Input.GetKeyUp(KeyCode.JoystickButton0) || Input.GetKeyUp(KeyCode.A))
         {
             GameControl.Instance.ChangeToBattleScreen();
         }

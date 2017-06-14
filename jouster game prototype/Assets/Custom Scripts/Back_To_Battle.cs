@@ -2,11 +2,16 @@
 
 public class Back_To_Battle : MonoBehaviour
 {
-    public void Update()
+    public float waitTimeInSeconds = 5;
+    System.Collections.IEnumerator StartBattle()
     {
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton1))
-        {
-            GameControl.Instance.NewRound();
-        }
+        yield return new WaitForSeconds(waitTimeInSeconds);
+        GameControl.Instance.NewRound();
+        yield break;
+    }
+
+    public void Start()
+    {
+        StartCoroutine("StartBattle");
     }
 }
