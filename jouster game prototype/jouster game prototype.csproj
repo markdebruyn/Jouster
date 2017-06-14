@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Custom Scripts\Back_To_Battle.cs" />
     <Compile Include="Assets\Custom Scripts\DetectGameOver.cs" />
+    <Compile Include="Assets\Custom Scripts\EndScreenInfoScript.cs" />
     <Compile Include="Assets\Custom Scripts\GameControl.cs" />
     <Compile Include="Assets\Custom Scripts\GameFlowControl.cs" />
     <Compile Include="Assets\Custom Scripts\MenuScript.cs" />
