@@ -12,7 +12,7 @@ public class EndScreenInfoScript : MonoBehaviour {
         int blueWins = GameControl.Instance.RetriveGamesWonBlue();
         int redWins = GameControl.Instance.RetriveGamesWonRed();
         redWin.SetActive(blueWins > redWins);
-        blueWin.SetActive(blueWins > redWins);
+        blueWin.SetActive(blueWins < redWins);
     }
 
 }

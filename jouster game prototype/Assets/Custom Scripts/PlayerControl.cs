@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
 
         yield return new WaitForSeconds(1);
         start = true;
+        // Dirty way of starting animation, when continues input is a fact this is unneeded.
         player.SpeedChange(true);
         player.SpeedChange(false);
         yield break;
@@ -33,8 +34,6 @@ public class PlayerControl : MonoBehaviour, PlayerControllerInterface
     void Start()
     {
         StartCoroutine("CountDown");
-        // Dirty way of starting animation, when continues input is a fact this is unneeded.
-
     }
 
     private void OnTriggerStay2D(Collider2D other)

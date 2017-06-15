@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class MenuScript : MonoBehaviour {
@@ -18,6 +17,10 @@ public class MenuScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.JoystickButton3) || Input.GetKeyUp(KeyCode.Escape))
         {
             Application.Quit();
+        }
+        if (Input.GetKeyUp(KeyCode.JoystickButton2) || Input.GetKeyUp(KeyCode.X))
+        {
+            GameControl.Instance.ChangeToCreditsScreen();
         }
     }
 }

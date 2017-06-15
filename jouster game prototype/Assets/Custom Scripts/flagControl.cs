@@ -23,7 +23,8 @@ public class flagControl : MonoBehaviour
         {
             blueflags[i].SetActive(true);
         }
-        for (int i = 0; i < (blueWin + redWin); i++)
+
+        for (int i = 0; i < (Rounds.Length); i++)
         {
             if ((blueWin + redWin) == i)
             {

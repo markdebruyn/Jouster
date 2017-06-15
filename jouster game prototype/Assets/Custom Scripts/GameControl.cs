@@ -41,6 +41,7 @@ public sealed class GameControl : MonoBehaviour
         Player1Lost = 4,
         Player2Lost = 5,
         EndScreen = 6,
+        CreditScreen = 7,
     }
 
     //static to make sure the values are not reset after scene schange
@@ -141,5 +142,10 @@ public sealed class GameControl : MonoBehaviour
     public void ChangeToStartScreen()
     {
         SceneManager.LoadScene((int)(ScenesEnum.StartScreen));
+    }
+
+    public void ChangeToCreditsScreen()
+    {
+        SceneManager.LoadScene((int)(ScenesEnum.CreditScreen));
     }
 }
