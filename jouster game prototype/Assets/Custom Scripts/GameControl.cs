@@ -13,6 +13,7 @@ public sealed class GameControl : MonoBehaviour
     */
     private static GameControl instance = null;
     private static readonly object padlock = new object();
+    static private AudioSource audioSource;
 
     public static GameControl Instance
     {
@@ -62,10 +63,20 @@ public sealed class GameControl : MonoBehaviour
         return redMatchWins;
     }
 
+
     void Start()
     {
-        // On load all non-static variables will be reset!
         DontDestroyOnLoad(this);
+        //battleTheme = gameObject.AddComponent<AudioSource>();
+        //mainTheme = gameObject.AddComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        // On load all non-static variables will be reset!
+
+        print(audioSource.clip);
+        audioSource.Play();
+        
+
     }
 
     public void Lose(int loser)
@@ -120,32 +131,51 @@ public sealed class GameControl : MonoBehaviour
     }
 
     public void NewRound()
-    {
+    {        
         SceneManager.LoadScene((int)(ScenesEnum.BattleScreen));
+        SoundManager(true);
     }
 
     public void ChangeToBattleScreen()
     {
         SceneManager.LoadScene((int)(ScenesEnum.BattleScreen));
+        SoundManager(true);
     } 
 
     public void ChangeToMenuScreen()
     {
         SceneManager.LoadScene((int)(ScenesEnum.MenuScreen));
+        SoundManager(false);
     } 
 
     public void ChangeToTutorialScreen()
     {
         SceneManager.LoadScene((int)(ScenesEnum.TutorialScreen));
+        SoundManager(false);
     }
 
     public void ChangeToStartScreen()
     {
         SceneManager.LoadScene((int)(ScenesEnum.StartScreen));
+        SoundManager(false);
     }
 
     public void ChangeToCreditsScreen()
     {
+        
         SceneManager.LoadScene((int)(ScenesEnum.CreditScreen));
+        SoundManager(false);
+    }
+
+    public void SoundManager(bool activeTheme)
+    {        
+        if (activeTheme)
+        {
+            audioSource.Pause();
+        }
+        else
+        {
+            audioSource.UnPause();
+        }
     }
 }

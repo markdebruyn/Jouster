@@ -51,9 +51,14 @@ public class Player : MonoBehaviour
     #endregion
 
 
-    //[Header("AudioSources")]
+    [Header("AudioSources")]
     #region
-    //[SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audiosource;
+    [SerializeField] private AudioClip jabAudio;
+    [SerializeField] private AudioClip blockAudio;
+    [SerializeField] private AudioClip galopAudio;
+    [SerializeField] private AudioClip drafAudio;
+    [SerializeField] private AudioClip clashAudio;
     #endregion
 
     #region "IEnummerator"
@@ -66,6 +71,9 @@ public class Player : MonoBehaviour
     {
         if (!isOnCooldownJab)
         {
+            audiosource.clip = jabAudio;
+            audiosource.Play();
+            audiosource.clip = drafAudio;
             skeletonAnimation.state.SetAnimation(2, stoot, false);
             isOnCooldownJab = true;
         }        
@@ -110,6 +118,7 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
 
 
     #region "Movement"
@@ -173,7 +182,6 @@ public class Player : MonoBehaviour
     {
         if (!isOnCooldownShield && !isStunned)
         {
-            //knightAnim.SetTrigger("Block");
             StartCoroutine("ShieldActive");
             StartCoroutine("ShieldCooldown");
 
@@ -194,6 +202,9 @@ public class Player : MonoBehaviour
             HitInfo enemyhitInfo = enemy.RetrieveHitInfo();
             if (enemyhitInfo.isShielded)
             {
+                audiosource.clip = blockAudio;
+                audiosource.Play();
+                audiosource.clip = drafAudio;
                 GetJabbed(enemyhitInfo.speed);
             }
             else
@@ -205,6 +216,7 @@ public class Player : MonoBehaviour
 
     public void GetJabbed(float enemySpeed)
     {
+
         StartCoroutine("StunActive");
         if (enemySpeed > speed)
         {
@@ -225,7 +237,8 @@ public class Player : MonoBehaviour
 
     public void Clash(HitInfo enemy)
     {
-        
+        audiosource.clip = clashAudio;
+        audiosource.Play();
         if (enemy.speed > speed)
         {
             // bereknening hoge knockback

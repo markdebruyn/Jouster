@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class flagControl : MonoBehaviour
 {
+    public AudioSource battleTheme;
     public GameObject[] Rounds;
     public GameObject[] redflags;
     public GameObject[] blueflags;
     // Use this for initialization
     void Start ()
     {
-
+        
         int blueWin = GameControl.Instance.RetriveGamesWonBlue();
         int redWin = GameControl.Instance.RetriveGamesWonRed();
 
