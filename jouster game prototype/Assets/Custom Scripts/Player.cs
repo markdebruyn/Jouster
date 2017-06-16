@@ -56,9 +56,13 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip jabAudio;
     [SerializeField] private AudioClip blockAudio;
-    [SerializeField] private AudioClip galopAudio;
-    [SerializeField] private AudioClip drafAudio;
+    //[SerializeField] private AudioClip galopAudio;
+   // [SerializeField] private AudioClip drafAudio;
     [SerializeField] private AudioClip clashAudio;
+
+    public float clashVolume = 0.2f;
+    public float jabVolume = 1.0f;
+    public float blockVolume = 1.0f;
     #endregion
 
     #region "IEnummerator"
@@ -71,9 +75,9 @@ public class Player : MonoBehaviour
     {
         if (!isOnCooldownJab)
         {
+            audiosource.volume = jabVolume;
             audiosource.clip = jabAudio;
             audiosource.Play();
-            audiosource.clip = drafAudio;
             skeletonAnimation.state.SetAnimation(2, stoot, false);
             isOnCooldownJab = true;
         }        
@@ -202,9 +206,10 @@ public class Player : MonoBehaviour
             HitInfo enemyhitInfo = enemy.RetrieveHitInfo();
             if (enemyhitInfo.isShielded)
             {
+                audiosource.volume = 100;
                 audiosource.clip = blockAudio;
                 audiosource.Play();
-                audiosource.clip = drafAudio;
+                
                 GetJabbed(enemyhitInfo.speed);
             }
             else
@@ -237,8 +242,11 @@ public class Player : MonoBehaviour
 
     public void Clash(HitInfo enemy)
     {
+        
+        audiosource.volume = clashVolume;
         audiosource.clip = clashAudio;
         audiosource.Play();
+        
         if (enemy.speed > speed)
         {
             // bereknening hoge knockback
