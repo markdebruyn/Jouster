@@ -241,12 +241,10 @@ public class Player : MonoBehaviour
     #endregion
 
     public void Clash(HitInfo enemy)
-    {
-        
+    {        
         audiosource.volume = clashVolume;
         audiosource.clip = clashAudio;
-        audiosource.Play();
-        
+        audiosource.Play();        
         if (enemy.speed > speed)
         {
             // bereknening hoge knockback
