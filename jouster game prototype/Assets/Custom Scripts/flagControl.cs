@@ -10,21 +10,11 @@ public class flagControl : MonoBehaviour
     public GameObject[] blueflags;
     // Use this for initialization
     void Start ()
-    {
-        
+    {        
         int blueWin = GameControl.Instance.RetriveGamesWonBlue();
         int redWin = GameControl.Instance.RetriveGamesWonRed();
-
-        for (int i = 0; i < blueWin; i++)
-        {
-            redflags[i].SetActive(true);
-        }
-
-        for (int i = 0; i < redWin; i++)
-        {
-            blueflags[i].SetActive(true);
-        }
-
+        SetBlueFlags(redWin);
+        SetRedFlags(blueWin);
         for (int i = 0; i < (Rounds.Length); i++)
         {
             if ((blueWin + redWin) == i)
@@ -36,6 +26,20 @@ public class flagControl : MonoBehaviour
                 Rounds[i].SetActive(false);
             }
         }
-
 	}
+
+    private void SetBlueFlags(int redWin)
+    {
+                for (int i = 0; i < redWin; i++)
+        {
+            blueflags[i].SetActive(true);
+        }
+    }
+    private void SetRedFlags(int blueWin)
+    {
+        for (int i = 0; i < blueWin; i++)
+        {
+            redflags[i].SetActive(true);
+        }
+    }
 }

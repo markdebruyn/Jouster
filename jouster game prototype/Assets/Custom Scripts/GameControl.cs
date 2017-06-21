@@ -54,13 +54,13 @@ public sealed class GameControl : MonoBehaviour
     // change does not work, TODO still needs fixing // test if works
     [SerializeField] int amountOfMatches = 3;
 
-    public int RetriveGamesWonBlue()
-    {
-        return blueMatchWins;
-    }
     public int RetriveGamesWonRed()
     {
         return redMatchWins;
+    }
+    public int RetriveGamesWonBlue()
+    {
+        return blueMatchWins;
     }
 
 
@@ -128,7 +128,14 @@ public sealed class GameControl : MonoBehaviour
             gameWinsRed++;
         }
         SceneManager.LoadScene((int)(ScenesEnum.EndScreen));
+        SoundManager(false);
     }
+    public void ResetWins()
+    {
+        redMatchWins = 0;
+        blueMatchWins = 0;
+    }
+
 
     public void NewRound()
     {        

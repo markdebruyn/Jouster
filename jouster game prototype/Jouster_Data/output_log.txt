@@ -1,0 +1,36 @@
+Initialize engine version: 5.6.0f3 (497a0f351392)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     1066 MB
+    Driver:   8.933.3.4000
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.034 seconds
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Bitbucket\backup\Fietsproject\jouster game prototype\Jouster_Data\Managed\System.dll (this message is harmless)
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.665068 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 3894 -> priority: 1 
+  Thread -> id: 2eb8 -> priority: 1 
+  Thread -> id: 2450 -> priority: 1 
+  Thread -> id: 35f4 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.311314 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 359.
+Total: 0.156879 ms (FindLiveObjects: 0.019060 ms CreateObjectMapping: 0.022481 ms MarkObjects: 0.099210 ms  DeleteObjects: 0.015150 ms)
+
